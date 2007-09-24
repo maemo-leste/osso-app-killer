@@ -1,7 +1,7 @@
 #!/bin/sh
 # This file is part of osso-app-killer.
 #
-# Copyright (C) 2005-2006 Nokia Corporation. All rights reserved.
+# Copyright (C) 2005-2007 Nokia Corporation. All rights reserved.
 #
 # Contact: Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>
 #
@@ -32,12 +32,23 @@ if [ $? = 0 ]; then
           rm -f $f
         done
         continue
+      elif [ "x$CUD" = "x" ]; then
+        for f in `find system -name *.xml`; do
+          # in ROS, paths having 'system/bluetooth' are preserved
+          echo "$f" | grep -e 'system\/bluetooth' > /dev/null
+          if [ $? = 0 ]; then
+            continue
+          fi
+          echo "$0: removing $f"
+          rm -f $f
+        done
+        continue
       fi
     elif [ "x$d" = "xapps" ]; then
       # special handling for subdirectory 'apps'
       if [ "x$CUD" = "x" ]; then
         for f in `find apps -name *.xml`; do
-          # in RFS, paths having 'telepathy' are preserved
+          # in ROS, paths having 'telepathy' are preserved
           echo "$f" | grep -e 'telepathy' > /dev/null
           if [ $? = 0 ]; then
             continue

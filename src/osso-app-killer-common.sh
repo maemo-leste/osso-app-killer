@@ -3,7 +3,7 @@
 #
 # This file is part of osso-app-killer.
 #
-# Copyright (C) 2005-2006 Nokia Corporation. All rights reserved.
+# Copyright (C) 2005-2007 Nokia Corporation. All rights reserved.
 #
 # Contact: Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>
 #
@@ -24,12 +24,17 @@
 DIR=/etc/osso-af-init
 
 # reset the Bluetooth name
+if [ -x /usr/bin/osso-product-info ]; then
+  NAME=`/usr/bin/osso-product-info -qOSSO_PRODUCT_NAME`
+else
+  NAME='Nokia N800'
+fi
 dbus-send --system --dest=org.bluez /org/bluez/hci0 \
-  org.bluez.Adapter.SetName string:'Nokia N800'
+  org.bluez.Adapter.SetName string:"$NAME"
 
 if [ "x$CUD" != "x" ]; then
   # restore the original language
-  cp -f $DIR/locale.orig $DIR/locale
+  cat $DIR/locale.orig > $DIR/locale
   USER=`whoami`
   if [ "x$USER" = "xroot" ]; then
     chown user:users $DIR/locale

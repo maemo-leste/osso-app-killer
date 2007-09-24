@@ -1,3 +1,12 @@
+osso-app-killer (1.16-1~unreleased) unstable; urgency=low
+
+  * Use osso-product-info, if available, to get the product name.
+  * Spare 'system/bluetooth' GConf keys in ROS. Fixes: NB#59060
+  * Use 'cat' instead of 'cp' to restore the locale file, avoiding the busybox
+    strangeness.
+
+ -- Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>  Mon, 24 Sep 2007 16:34:54 +0300
+
 osso-app-killer (1.15-1.1) unstable; urgency=low
 
   * Increasing the version, rebuilding with libdbus-1-3 is needed
