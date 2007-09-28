@@ -8,7 +8,7 @@ osso-app-killer (1.16-1~unreleased) unstable; urgency=low
     is a subdirectory).
   * Added osso-clean-mmc.sh.
   * Added osso-app-killer.sudoers file with some new entries for formatting
-    a memory card.
+    a memory card (formatting not enabled yet).
 
  -- Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>  Mon, 24 Sep 2007 16:34:54 +0300
 
