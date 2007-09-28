@@ -1,4 +1,4 @@
-osso-app-killer (1.16-1~unreleased) unstable; urgency=low
+osso-app-killer (1.16-1) unstable; urgency=low
 
   * Use osso-product-info, if available, to get the product name.
   * Spare 'system/bluetooth' GConf keys in ROS. Fixes: NB#59060
@@ -6,11 +6,11 @@ osso-app-killer (1.16-1~unreleased) unstable; urgency=low
     strangeness.
   * Do not remove xml files, just empty them (avoids a problem when there
     is a subdirectory).
-  * Added osso-clean-mmc.sh.
+  * Added osso-clean-mmc.sh. Internal card in RX-44 is now formatted in CUD.
   * Added osso-app-killer.sudoers file with some new entries for formatting
     a memory card.
 
- -- Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>  Mon, 24 Sep 2007 16:34:54 +0300
+ -- Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>  Fri, 28 Sep 2007 18:03:13 +0300
 
 osso-app-killer (1.15-1.1) unstable; urgency=low
 
