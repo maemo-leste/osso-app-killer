@@ -1,5 +1,12 @@
 #!/bin/sh
 
+if [ "x$USER" = "xroot" ]; then
+  SUDO=''
+  echo "$0: Warning, I'm root"
+else
+  SUDO='sudo'
+fi
+
 DEV=''
 HOST=`hal-find-by-property --key mmc_host.slot_name --string internal`
 if [ $? = 0 ]; then
@@ -16,11 +23,11 @@ if [ $? = 0 ]; then
 fi
 if [ "x$DEV" != "x" ]; then
   echo "Internal memory card device is $DEV"
-  sudo umount /media/mmc2
+  $SUDO /bin/umount /media/mmc2
   if [ $? = 0 ]; then
-    sudo /usr/sbin/osso-prepare-partition.sh $DEV
+    $SUDO /usr/sbin/osso-prepare-partition.sh $DEV
     if [ $? = 0 ]; then
-      sudo mkdosfs "${DEV}p1"
+      $SUDO /sbin/mkdosfs "${DEV}p1"
     fi
   fi
 else

@@ -1,4 +1,4 @@
-user ALL = NOPASSWD: umount /media/mmc2 
+user ALL = NOPASSWD: /bin/umount /media/mmc2 
 user ALL = NOPASSWD: /usr/sbin/osso-prepare-partition.sh *
-user ALL = NOPASSWD: mkdosfs *
+user ALL = NOPASSWD: /sbin/mkdosfs *
 
