@@ -1,4 +1,5 @@
 #!/bin/sh
+set +e
 
 if [ "x$USER" = "xroot" ]; then
   SUDO=''
