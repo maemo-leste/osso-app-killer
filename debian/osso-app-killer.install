@@ -1,2 +1,2 @@
 *.sh /usr/sbin
-osso-app-killer.sudoers /etc/sudoers.d
+../osso-app-killer.sudoers /etc/sudoers.d
