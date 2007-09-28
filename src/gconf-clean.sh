@@ -19,6 +19,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 # 02110-1301 USA
 
+empty_file()
+{
+  rm -f $1
+  touch $1
+  chmod ugo+rw $1
+}
+
 cd /etc/osso-af-init/gconf-dir
 if [ $? = 0 ]; then
   for d in `ls`; do
@@ -29,7 +36,7 @@ if [ $? = 0 ]; then
       if [ "x$CUD" != "x" ]; then
         for f in `find system -name *.xml`; do
           echo "$0: removing $f"
-          rm -f $f
+          empty_file $f
         done
         continue
       elif [ "x$CUD" = "x" ]; then
@@ -40,7 +47,7 @@ if [ $? = 0 ]; then
             continue
           fi
           echo "$0: removing $f"
-          rm -f $f
+          empty_file $f
         done
         continue
       fi
@@ -54,7 +61,7 @@ if [ $? = 0 ]; then
             continue
           fi
           echo "$0: removing $f"
-          rm -f $f
+          empty_file $f
         done
         continue
       fi

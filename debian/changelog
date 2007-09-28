@@ -4,6 +4,11 @@ osso-app-killer (1.16-1~unreleased) unstable; urgency=low
   * Spare 'system/bluetooth' GConf keys in ROS. Fixes: NB#59060
   * Use 'cat' instead of 'cp' to restore the locale file, avoiding the busybox
     strangeness.
+  * Do not remove xml files, just empty them (avoids a problem when there
+    is a subdirectory).
+  * Added osso-clean-mmc.sh.
+  * Added osso-app-killer.sudoers file with some new entries for formatting
+    a memory card.
 
  -- Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>  Mon, 24 Sep 2007 16:34:54 +0300
 
