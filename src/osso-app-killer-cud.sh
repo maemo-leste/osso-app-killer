@@ -48,7 +48,6 @@ $SUDO $DIR/gconf-daemon.sh stop
 if [ "x$OSSO_CUD_DOES_NOT_DESTROY" = "x" ]; then
   # Remove all user data
   CUD=foo /usr/sbin/gconf-clean.sh 
-  /usr/sbin/osso-clean-mmc.sh
 
   OLDDIR=`pwd`
   if [ -d /home/user/.osso ]; then
