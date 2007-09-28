@@ -49,6 +49,14 @@ if [ "x$OSSO_CUD_DOES_NOT_DESTROY" = "x" ]; then
   # Remove all user data
   CUD=foo /usr/sbin/gconf-clean.sh 
 
+  # possibly clear memory card
+  if [ -x /usr/bin/osso-product-info ]; then
+    HW=`/usr/bin/osso-product-info -qOSSO_PRODUCT_HARDWARE`
+    if [ "$HW" = 'RX-44' ]; then
+      /usr/sbin/osso-clean-mmc.sh
+    fi
+  fi
+
   OLDDIR=`pwd`
   if [ -d /home/user/.osso ]; then
     cd /home/user/.osso
