@@ -1,3 +1,9 @@
+osso-app-killer (1.17-1~unreleased) unstable; urgency=low
+
+  * Remove 'empty' GConf directories. Fixes: NB#72357
+
+ -- Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>  Tue, 16 Oct 2007 14:19:46 +0300
+
 osso-app-killer (1.16-1) unstable; urgency=low
 
   * Use osso-product-info, if available, to get the product name.

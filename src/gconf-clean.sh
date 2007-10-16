@@ -19,11 +19,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 # 02110-1301 USA
 
+is_empty()
+{
+  cmp $1 - << EOF
+EOF
+}
+
+# remove empty directories and directories with only empty files
+r_rmdir()
+{
+  local EMPTY=1
+  local OLDDIR=`pwd`
+  cd $1
+  for f in `ls`; do
+    if [ -d $f ]; then
+      r_rmdir $f
+    fi
+  done
+  for f in `ls`; do
+    if [ -d $f ]; then
+      EMPTY=0
+    elif [ -f $f ]; then
+      if ! is_empty $f; then
+        EMPTY=0
+      fi
+    fi
+  done
+  cd $OLDDIR
+  if [ $EMPTY = 1 ]; then
+    echo "removing $1"
+    rm -rf $1
+  fi
+}
+
 empty_file()
 {
-  rm -f $1
-  touch $1
-  chmod ugo+rw $1
+  echo -n '' > $1
 }
 
 cd /etc/osso-af-init/gconf-dir
@@ -38,6 +69,7 @@ if [ $? = 0 ]; then
           echo "$0: removing $f"
           empty_file $f
         done
+        r_rmdir $d
         continue
       elif [ "x$CUD" = "x" ]; then
         for f in `find system -name *.xml`; do
@@ -49,6 +81,7 @@ if [ $? = 0 ]; then
           echo "$0: removing $f"
           empty_file $f
         done
+        r_rmdir $d
         continue
       fi
     elif [ "x$d" = "xapps" ]; then
@@ -63,6 +96,7 @@ if [ $? = 0 ]; then
           echo "$0: removing $f"
           empty_file $f
         done
+        r_rmdir $d
         continue
       fi
     fi
