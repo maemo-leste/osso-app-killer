@@ -3,7 +3,7 @@
 #
 # This file is part of osso-app-killer.
 #
-# Copyright (C) 2005-2006 Nokia Corporation. All rights reserved.
+# Copyright (C) 2005-2007 Nokia Corporation. All rights reserved.
 #
 # Contact: Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>
 #
@@ -42,6 +42,15 @@ fi
 source $DIR/af-defines.sh
 
 # shut down things
+if [ -x /etc/init.d/hildon-desktop ]; then
+  $SUDO /etc/init.d/hildon-desktop stop
+fi
+if [ -x /etc/init.d/metalayer-crawler0 ]; then
+  $SUDO /etc/init.d/metalayer-crawler0 stop
+fi
+if [ -x /etc/init.d/mediaplayer-daemon ]; then
+  $SUDO /etc/init.d/mediaplayer-daemon stop
+fi
 $SUDO /etc/init.d/af-base-apps stop
 $SUDO $DIR/gconf-daemon.sh stop
 

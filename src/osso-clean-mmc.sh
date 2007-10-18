@@ -24,7 +24,9 @@ if [ $? = 0 ]; then
 fi
 if [ "x$DEV" != "x" ]; then
   echo "Internal memory card device is $DEV"
+  sleep 5
   $SUDO /etc/init.d/ke-recv stop
+  sleep 5
   $SUDO /bin/umount /media/mmc2
   $SUDO /usr/sbin/osso-prepare-partition.sh $DEV
   if [ $? = 0 ]; then
