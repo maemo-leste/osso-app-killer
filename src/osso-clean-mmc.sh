@@ -26,6 +26,8 @@ if [ "x$DEV" != "x" ]; then
   echo "Internal memory card device is $DEV"
 
   # Wait until memory card is not used by applications
+  # (this will only detect files open by 'user' if this
+  # script is run as 'user')
   INC=1
   while lsof /media/mmc2 > /dev/null; do
     if [ $INC -gt 10 ]; then
