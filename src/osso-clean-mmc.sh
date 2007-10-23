@@ -24,9 +24,31 @@ if [ $? = 0 ]; then
 fi
 if [ "x$DEV" != "x" ]; then
   echo "Internal memory card device is $DEV"
-  sleep 5
+
+  # Wait until memory card is not used by applications
+  INC=1
+  while lsof /media/mmc2 > /dev/null; do
+    if [ $INC -gt 10 ]; then
+      echo "$0: memory card still used after 10 seconds"
+      break
+    fi
+    sleep 1
+    INC=`expr $INC + 1`
+  done
+
   $SUDO /etc/init.d/ke-recv stop
-  sleep 5
+
+  # Wait until ke-recv has exited
+  INC=1
+  while pidof ke-recv > /dev/null; do
+    if [ $INC -gt 10 ]; then
+      echo "$0: ke-recv still running after 10 seconds"
+      break
+    fi
+    sleep 1
+    INC=`expr $INC + 1`
+  done
+
   $SUDO /bin/umount /media/mmc2
   $SUDO /usr/sbin/osso-prepare-partition.sh $DEV
   if [ $? = 0 ]; then
