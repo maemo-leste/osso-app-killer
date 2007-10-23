@@ -1,9 +1,9 @@
-osso-app-killer (1.17-1~unreleased) unstable; urgency=low
+osso-app-killer (1.17-1) unstable; urgency=low
 
   * Remove 'empty' GConf directories. Fixes: NB#72357
   * Backported CUD fixes from 1.16-1fix. Fixes: NB#71791
 
- -- Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>  Tue, 16 Oct 2007 14:19:46 +0300
+ -- Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>  Tue, 23 Oct 2007 16:47:24 +0300
 
 osso-app-killer (1.16-1) unstable; urgency=low
 
