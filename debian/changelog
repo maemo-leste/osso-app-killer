@@ -1,3 +1,9 @@
+osso-app-killer (1.18-1~unreleased) unstable; urgency=low
+
+  * Added rotating animation for CUD when the internal card is cleared.
+
+ -- Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>  Mon, 29 Oct 2007 09:36:54 +0200
+
 osso-app-killer (1.17-1) unstable; urgency=low
 
   * Remove 'empty' GConf directories. Fixes: NB#72357

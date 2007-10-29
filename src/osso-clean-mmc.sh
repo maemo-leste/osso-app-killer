@@ -24,6 +24,7 @@ if [ $? = 0 ]; then
 fi
 if [ "x$DEV" != "x" ]; then
   echo "Internal memory card device is $DEV"
+  /usr/sbin/anim-shower 20000 &
 
   # Wait until memory card is not used by applications
   # (this will only detect files open by 'user' if this
