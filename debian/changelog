@@ -1,4 +1,4 @@
-osso-app-killer (1.18-1~unreleased) unstable; urgency=low
+osso-app-killer (1.18-1) unstable; urgency=low
 
   * Added rotating animation for CUD when the internal card is cleared.
 
