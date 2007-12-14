@@ -1,3 +1,9 @@
+osso-app-killer (1.19-1~unreleased) unstable; urgency=low
+
+  * Added 'RX-48' to the HW-specific part of CUD. Fixes: NB#78472
+
+ -- Kimmo Hämäläinen <kimmo.hamalainen@nokia.com>  Fri, 14 Dec 2007 13:35:02 +0200
+
 osso-app-killer (1.18-1) unstable; urgency=low
 
   * Added rotating animation for CUD when the internal card is cleared.

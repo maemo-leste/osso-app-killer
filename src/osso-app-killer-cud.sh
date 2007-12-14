@@ -61,7 +61,7 @@ if [ "x$OSSO_CUD_DOES_NOT_DESTROY" = "x" ]; then
   # possibly clear memory card
   if [ -x /usr/bin/osso-product-info ]; then
     HW=`/usr/bin/osso-product-info -qOSSO_PRODUCT_HARDWARE`
-    if [ "$HW" = 'RX-44' ]; then
+    if [ "$HW" = 'RX-44' -o "$HW" = 'RX-48' ]; then
       /usr/sbin/osso-clean-mmc.sh
     fi
   fi
