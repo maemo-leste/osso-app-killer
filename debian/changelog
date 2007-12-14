@@ -1,4 +1,4 @@
-osso-app-killer (1.19-1~unreleased) unstable; urgency=low
+osso-app-killer (1.19-1) unstable; urgency=low
 
   * Added 'RX-48' to the HW-specific part of CUD. Fixes: NB#78472
 
