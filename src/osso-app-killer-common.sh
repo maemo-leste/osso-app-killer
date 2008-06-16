@@ -22,6 +22,7 @@
 # 02110-1301 USA
 
 DIR=/etc/osso-af-init
+DEFAULT_LOCALE_DIR=/usr/share/osso-af-startup
 
 # reset the Bluetooth name
 if [ -x /usr/bin/osso-product-info ]; then
@@ -34,7 +35,7 @@ dbus-send --system --dest=org.bluez /org/bluez/hci0 \
 
 if [ "x$CUD" != "x" ]; then
   # restore the original language
-  cat $DIR/locale.orig > $DIR/locale
+  cat $DEFAULT_LOCALE_DIR/locale.orig > $DIR/locale
   USER=`whoami`
   if [ "x$USER" = "xroot" ]; then
     chown user:users $DIR/locale

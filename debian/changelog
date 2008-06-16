@@ -1,3 +1,10 @@
+osso-app-killer (1.20-1) unstable; urgency=low
+
+  * Restore locale from /usr/share/osso-af-startup/locale.orig, not from
+    /etc/osso-af-init/locale.orig
+
+ -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Mon, 16 Jun 2008 16:05:47 +0300
+
 osso-app-killer (1.19-1) unstable; urgency=low
 
   * Added 'RX-48' to the HW-specific part of CUD. Fixes: NB#78472
