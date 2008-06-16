@@ -22,7 +22,7 @@
 # 02110-1301 USA
 
 DIR=/etc/osso-af-init
-DEFAULT_LOCALE_DIR=/usr/share/osso-af-startup
+DEFAULT_LOCALE_DIR=/usr/share/osso-af-init
 
 # reset the Bluetooth name
 if [ -x /usr/bin/osso-product-info ]; then
