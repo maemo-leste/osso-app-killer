@@ -23,7 +23,7 @@
 
 DIR=/etc/osso-af-init
 
-if [ "x$USER" = "xroot" ]; then
+if test $(id -u) -eq 0; then
   echo "$0: Error, I'm root"
   exit 1
 fi
