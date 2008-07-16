@@ -21,7 +21,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 # 02110-1301 USA
 
-if [ "x$USER" = "xroot" ]; then
+if test $(id -u) -eq 0; then
   echo "$0: Error, I'm root"
   exit 1
 fi

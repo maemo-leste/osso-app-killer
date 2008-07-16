@@ -37,7 +37,7 @@ if [ "x$CUD" != "x" ]; then
   # restore the original language
   cat $DEFAULT_LOCALE_DIR/locale.orig > $DIR/locale
   USER=`whoami`
-  if [ "x$USER" = "xroot" ]; then
+  if test $(id -u) -eq 0; then
     chown user:users $DIR/locale
   fi
 fi

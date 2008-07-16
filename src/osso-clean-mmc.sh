@@ -1,7 +1,7 @@
 #!/bin/sh
 set +e
 
-if [ "x$USER" = "xroot" ]; then
+if test $(id -u) -eq 0; then
   SUDO=''
   echo "$0: Warning, I'm root"
 else

@@ -1,3 +1,9 @@
+osso-app-killer (1.22-1) unstable; urgency=low
+
+  * Replace all the other rootchecks as well
+
+ -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Thu, 10 Jul 2008 18:25:56 +0300
+
 osso-app-killer (1.21-1) unstable; urgency=low
 
   * Need to use $(id -u) -eq 0 to check for root, rather than "x$USER" = "xroot"

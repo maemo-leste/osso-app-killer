@@ -26,7 +26,7 @@ DEFHOME=/home/user
 export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11'
 USER=`whoami`
 
-if [ "x$USER" = "xroot" ]; then
+if test $(id -u) -eq 0; then
   SUDO=''
   HOME=$DEFHOME
   echo "$0: Warning, I'm root"
@@ -112,7 +112,7 @@ fi
 # re-create first boot flags
 touch $HOME/.suw_first_run
 touch $HOME/first-boot-flag
-if [ "x$USER" = "xroot" ]; then
+if test $(id -u) -eq 0; then
   chown user.users $HOME/.suw_first_run
   chown user.users $HOME/first-boot-flag
 fi
