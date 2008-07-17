@@ -1,3 +1,9 @@
+osso-app-killer (1.23-1) unstable; urgency=low
+
+  * Fixes: NB#86990
+
+ -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Thu, 17 Jul 2008 11:02:10 +0300
+
 osso-app-killer (1.22-1) unstable; urgency=low
 
   * Replace all the other rootchecks as well
