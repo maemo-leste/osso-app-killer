@@ -1,6 +1,7 @@
 osso-app-killer (1.24-1) unstable; urgency=low
 
   * Fixing scripts for Fremantle
+  * Fixes: NB#91706
 
  -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Mon, 12 Jan 2009 14:04:11 +0200
 
