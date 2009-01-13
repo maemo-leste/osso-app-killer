@@ -115,7 +115,6 @@ fi
 # re-create first boot flags
 touch $HOME/.suw_first_run
 touch $HOME/first-boot-flag
-rm -rf $HOME/.osso/osso_startup_wizard_state
 if test $(id -u) -eq 0; then
   chown user.users $HOME/.suw_first_run
   chown user.users $HOME/first-boot-flag
