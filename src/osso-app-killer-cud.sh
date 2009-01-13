@@ -53,6 +53,9 @@ if [ -x /etc/init.d/mediaplayer-daemon ]; then
 fi
 $SUDO /etc/init.d/af-base-apps stop
 $SUDO $DIR/gconf-daemon.sh stop
+if ps ax | grep -v grep | grep -q gconfd-2; then
+  $SUDO /usr/bin/killall gconfd-2
+fi
 
 if [ "x$OSSO_CUD_DOES_NOT_DESTROY" = "x" ]; then
   # Remove all user data

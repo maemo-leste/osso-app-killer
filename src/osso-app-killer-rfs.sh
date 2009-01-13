@@ -33,6 +33,9 @@ sudo /etc/init.d/af-base-apps stop
 # define AF-wide environment
 source $DIR/af-defines.sh
 sudo $DIR/gconf-daemon.sh stop
+if ps ax | grep -v grep | grep -q gconfd-2; then
+  $SUDO /usr/bin/killall gconfd-2
+fi
 
 # Remove user-modified settings
 if [ "x$OSSO_RFS_DOES_NOT_DESTROY" = "x" ]; then

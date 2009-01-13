@@ -24,27 +24,34 @@
 DIR=/etc/osso-af-init
 DEFAULT_LOCALE_DIR=/usr/share/osso-af-init
 
+set_bluez4_device_name() # $1 = new device name
+{
+  DEFAULT_ADAPTER=$(dbus-send --print-reply --system --dest=org.bluez / org.bluez.Manager.DefaultAdapter | awk -F '"' {'if ($2 != "") print $2;'})
+  if test "x$DEFAULT_ADAPTER" != "x"; then
+    dbus-send --print-reply --system --dest=org.bluez $DEFAULT_ADAPTER org.bluez.Adapter.SetProperty string:Name variant:string:"$1"
+  fi
+}
+
 # reset the Bluetooth name
 if [ -x /usr/bin/osso-product-info ]; then
-  NAME=`/usr/bin/osso-product-info -qOSSO_PRODUCT_NAME`
+  NAME=`/usr/bin/osso-product-info -qOSSO_PRODUCT_SHORT_NAME`
 else
   NAME='Nokia N800'
 fi
-dbus-send --system --dest=org.bluez /org/bluez/hci0 \
-  org.bluez.Adapter.SetName string:"$NAME"
+
+if ! dbus-send --system --dest=org.bluez /org/bluez/hci0 org.bluez.Adapter.SetName string:"$NAME"; then
+  set_bluez4_device_name "$NAME"
+fi
 
 if [ "x$CUD" != "x" ]; then
   # restore the original language
   cat $DEFAULT_LOCALE_DIR/locale.orig > $DIR/locale
-  USER=`whoami`
   if test $(id -u) -eq 0; then
     chown user:users $DIR/locale
   fi
 fi
 
-# ask MCE to reboot the system
-dbus-send --system --type=method_call \
-  --dest="com.nokia.mce" --print-reply \
-  "/com/nokia/mce/request" \
-  com.nokia.mce.request.req_reboot
+if ! dbus-send --system --type=method_call --dest="com.nokia.mce"  --print-reply "/com/nokia/mce/request"  com.nokia.mce.request.req_reboot; then
+     dbus-send --system --type=method_call --dest="com.nokia.dsme" --print-reply "/com/nokia/dsme/request" com.nokia.dsme.request.req_reboot
+fi
 exit 0

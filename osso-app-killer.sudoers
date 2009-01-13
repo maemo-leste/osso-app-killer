@@ -5,3 +5,4 @@ user ALL = NOPASSWD: /etc/init.d/ke-recv stop
 user ALL = NOPASSWD: /etc/init.d/hildon-desktop stop
 user ALL = NOPASSWD: /etc/init.d/mediaplayer-daemon stop
 user ALL = NOPASSWD: /etc/init.d/metalayer-crawler0 stop
+user ALL = NOPASSWD: /usr/bin/killall gconfd-2
