@@ -1,13 +1,7 @@
-osso-app-killer (1.26-1) unstable; urgency=low
+osso-app-killer (1.25-1) unstable; urgency=low
 
   * SUW code is unnecessary. It should be done by SUW cud script.
   * BT device name reset in osso-app-killer-common.sh is unnecessary. It should be done by cud and rfs scripts.
-
- -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Wed, 14 Jan 2009 13:35:24 +0200
-
-osso-app-killer (1.25-1) unstable; urgency=low
-
-  * Ooops! Forgot to add code removing SUW state so as to ensure SUW start on next reboot
 
  -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Tue, 13 Jan 2009 13:40:19 +0200
 
