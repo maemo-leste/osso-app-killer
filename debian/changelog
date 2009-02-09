@@ -2,6 +2,7 @@ osso-app-killer (1.25-1) unstable; urgency=low
 
   * SUW code is unnecessary. It should be done by SUW cud script.
   * BT device name reset in osso-app-killer-common.sh is unnecessary. It should be done by cud and rfs scripts.
+  * Don't check for free space when removing ~/.osso
 
  -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Tue, 13 Jan 2009 13:40:19 +0200
 

@@ -72,13 +72,7 @@ if [ "x$OSSO_CUD_DOES_NOT_DESTROY" = "x" ]; then
   OLDDIR=`pwd`
   if [ -d /home/user/.osso ]; then
     cd /home/user/.osso
-    # only remove if there is certain amount of free space
-    FREE=`df | grep " /$" | awk '{print $4}'`
-    if [ $FREE -gt 3500 ]; then
-      rm -rf *
-    else
-      echo "$0: Not enough free space to safely remove .osso"
-    fi
+    rm -rf *
   fi  
 
   cd $HOME/.osso-cud-scripts ;# this location should be deprecated
