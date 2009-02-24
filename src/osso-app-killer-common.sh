@@ -22,15 +22,15 @@
 # 02110-1301 USA
 
 DIR=/etc/osso-af-init
-DEFAULT_LOCALE_DIR=/usr/share/osso-af-init
+# DEFAULT_LOCALE_DIR=/usr/share/osso-af-init
 
-if [ "x$CUD" != "x" ]; then
-  # restore the original language
-  cat $DEFAULT_LOCALE_DIR/locale.orig > $DIR/locale
-  if test $(id -u) -eq 0; then
-    chown user:users $DIR/locale
-  fi
-fi
+# if [ "x$CUD" != "x" ]; then
+#   # restore the original language
+#   cat $DEFAULT_LOCALE_DIR/locale.orig > $DIR/locale
+#   if test $(id -u) -eq 0; then
+#     chown user:users $DIR/locale
+#   fi
+# fi
 
 if ! dbus-send --system --type=method_call --dest="com.nokia.mce"  --print-reply "/com/nokia/mce/request"  com.nokia.mce.request.req_reboot; then
      dbus-send --system --type=method_call --dest="com.nokia.dsme" --print-reply "/com/nokia/dsme/request" com.nokia.dsme.request.req_reboot
