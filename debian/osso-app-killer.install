@@ -2,4 +2,4 @@
 ../osso-app-killer.sudoers /etc/sudoers.d
 ../osso-rfs-scripts /etc
 ../osso-cud-scripts /etc
-../.osso_cud_scripts /etc/skel
+../.osso-cud-scripts /etc/skel
