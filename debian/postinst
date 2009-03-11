@@ -15,40 +15,6 @@
 # the debian-policy package
 #
 
-TGT=''
-if [ -e /targets/links/scratchbox.config ]; then
-  . /targets/links/scratchbox.config
-  TGT=$SBOX_TARGET_DIR
-fi
-
-USER=user
-GROUP=users
-HOME="$TGT/home/$USER"
-
-case "$1" in
-    configure)
-      if [ ! -e $HOME/.osso-cud-scripts ]; then
-        mkdir $HOME/.osso-cud-scripts
-        chown $USER.$GROUP $HOME/.osso-cud-scripts
-      fi
-      if [ ! -e /etc/osso-cud-scripts ]; then
-        mkdir /etc/osso-cud-scripts
-      fi
-      if [ ! -e /etc/osso-rfs-scripts ]; then
-        mkdir /etc/osso-rfs-scripts
-      fi
-    ;;
-
-    abort-upgrade|abort-remove|abort-deconfigure)
-
-    ;;
-
-    *)
-        echo "postinst called with unknown argument \`$1'" >&2
-        exit 1
-    ;;
-esac
-
 if [ -x /usr/sbin/update-sudoers ]; then
         /usr/sbin/update-sudoers
 fi
