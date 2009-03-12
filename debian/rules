@@ -38,6 +38,10 @@ install: build
 	dh_clean -k 
 	dh_installdirs
 
+	mkdir -p debian/osso-app-killer/etc/osso-cud-scripts
+	mkdir -p debian/osso-app-killer/etc/osso-rfs-scripts
+	mkdir -p debian/osso-app-killer/etc/skel/.osso-cud-scripts
+
 	# Add here commands to install the package into debian/osso-app-killer.
 
 

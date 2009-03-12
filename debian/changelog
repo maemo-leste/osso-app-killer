@@ -1,6 +1,9 @@
 osso-app-killer (1.26-1unreleased) unstable; urgency=low
 
   * Removed locale stuff
+  * Distribute /etc/osso-cud-scripts and /etc/osso-rfs-scripts instead of mkdir-ing them
+  * Distribute .osso-cud-scripts in /etc/skel/ instead of $HOME
+  * Fixes: NB#105207 (osso-app-killer must not access to $HOME)
 
  -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Tue, 24 Feb 2009 13:23:13 +0200
 
