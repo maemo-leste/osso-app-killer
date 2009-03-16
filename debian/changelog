@@ -1,4 +1,4 @@
-osso-app-killer (1.26-1unreleased) unstable; urgency=low
+osso-app-killer (1.26-1) unstable; urgency=low
 
   * Removed locale stuff
   * Distribute /etc/osso-cud-scripts and /etc/osso-rfs-scripts instead of mkdir-ing them
