@@ -51,6 +51,9 @@ fi
 if [ -x /etc/init.d/mediaplayer-daemon ]; then
   $SUDO /etc/init.d/mediaplayer-daemon stop
 fi
+if [ -x /etc/init.d/icd2 ]; then
+  $SUDO /etc/init.d/icd2 stop
+fi
 $SUDO /etc/init.d/af-base-apps stop
 $SUDO $DIR/gconf-daemon.sh stop
 if ps ax | grep -v grep | grep -q gconfd-2; then

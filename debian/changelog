@@ -1,3 +1,10 @@
+osso-app-killer (1.27-1) unstable; urgency=low
+
+  * Stop icd2 during CUD
+  * Fixes: NB#99242 (Data counter is not cleared with Clear device from control panel)
+
+ -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Thu, 19 Mar 2009 12:25:12 +0200
+
 osso-app-killer (1.26-1) unstable; urgency=low
 
   * Removed locale stuff
