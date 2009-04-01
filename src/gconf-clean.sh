@@ -88,11 +88,31 @@ if [ $? = 0 ]; then
       # special handling for subdirectory 'apps'
       if [ "x$CUD" = "x" ]; then
         for f in `find apps -name *.xml`; do
+
           # in ROS, paths having 'telepathy' are preserved
           echo "$f" | grep -e 'telepathy' > /dev/null
           if [ $? = 0 ]; then
             continue
           fi
+
+          # in ROS, paths having 'hildon-desktop/applets' are preserved
+          echo "$f" | grep -e 'hildon-desktop/applets' > /dev/null
+          if [ $? = 0 ]; then
+            continue
+          fi
+
+#          # in ROS, paths having 'modest/accounts' are preserved
+#          echo "$f" | grep -e 'modest/accounts' > /dev/null
+#          if [ $? = 0 ]; then
+#            continue
+#          fi
+
+          # in ROS, paths having 'hildon-home' are preserved
+          echo "$f" | grep -e 'hildon-home' > /dev/null
+          if [ $? = 0 ]; then
+            continue
+          fi
+
           echo "$0: removing $f"
           empty_file $f
         done

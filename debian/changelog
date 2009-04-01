@@ -1,3 +1,13 @@
+osso-app-killer (1.28-1) unstable; urgency=low
+
+  * Skip over /apps/osso/hildon-desktop/applets, and /apps/osso/hildon-home during
+    gconf-clean.sh
+  * Fixes: NB#102054 (Home shortcuts (inserted by user) are effected by Restore original settings.)
+  * Do not yet skip over /apps/modest/accounts, because it's not enough to save email accounts
+  * Does not yet fix NB#105630 (Email account erased after performing restore original settings), but will do so RSN(TM)
+
+ -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Wed,  1 Apr 2009 15:08:05 +0300
+
 osso-app-killer (1.27-1) unstable; urgency=low
 
   * Stop icd2 during CUD
