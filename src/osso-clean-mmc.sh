@@ -1,62 +1,21 @@
 #!/bin/sh
-set +e
 
-if test $(id -u) -eq 0; then
-  SUDO=''
-  echo "$0: Warning, I'm root"
-else
-  SUDO='sudo'
-fi
+OLD_PWD=$(pwd)
 
-/usr/sbin/anim-shower 20000 &
-DEV=''
-HOST=`hal-find-by-property --key mmc_host.slot_name --string internal`
-if [ $? = 0 ]; then
-  RCA=`hal-find-by-property --key info.parent --string $HOST`
-  if [ $? = 0 ]; then
-    STOR=`hal-find-by-property --key info.parent --string $RCA`
-    if [ $? = 0 ]; then
-      TMP=`hal-get-property --udi $STOR --key block.device`
-      if [ $? = 0 ]; then
-        DEV=$TMP
-      fi
-    fi
-  fi
-fi
-if [ "x$DEV" != "x" ]; then
-  echo "Internal memory card device is $DEV"
+set -x
 
-  # Wait until memory card is not used by applications
-  # (this will only detect files open by 'user' if this
-  # script is run as 'user')
-  INC=1
-  while lsof /media/mmc2 > /dev/null; do
-    if [ $INC -gt 10 ]; then
-      echo "$0: memory card still used after 10 seconds"
-      break
-    fi
-    sleep 1
-    INC=`expr $INC + 1`
-  done
+DIR_TO_CLEAR=${HOME}/MyDocs
 
-  $SUDO /etc/init.d/ke-recv stop
+cd ${HOME}/MyDocs
+for rmable in $(ls -A); do
+  rm -rf $rmable
+done
 
-  # Wait until ke-recv has exited
-  INC=1
-  while pidof ke-recv > /dev/null; do
-    if [ $INC -gt 10 ]; then
-      echo "$0: ke-recv still running after 10 seconds"
-      break
-    fi
-    sleep 1
-    INC=`expr $INC + 1`
-  done
+cd ${HOME}
+for rmable in $(ls -A); do
+ if test "x${rmable}" != "xMyDocs"; then
+   rm -rf $rmable
+ fi
+done
 
-  $SUDO /bin/umount /media/mmc2
-  $SUDO /usr/sbin/osso-prepare-partition.sh $DEV
-  if [ $? = 0 ]; then
-    $SUDO /sbin/mkdosfs "${DEV}p1"
-  fi
-else
-  echo "Could not find out internal memory card device"
-fi
+cd ${OLD_PWD}

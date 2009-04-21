@@ -1,7 +1,6 @@
 osso-app-killer (1.29-1) unstable; urgency=low
 
-  * Provide script /etc/osso-cud-scripts/remove-user-content-cud.sh
-    to remove user content during CUD
+  * Re-write script osso-clean-mmc.sh to handle Fremantle's MMC cleaning
   * Fixes: NB#109305 (Unable to delete default files from File manager with clear device option from control panel)
   * Parially fixes NB#111442 (osso-app-killer-cud.sh shall be checked and refreshed)
 

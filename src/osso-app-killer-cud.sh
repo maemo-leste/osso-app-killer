@@ -43,11 +43,14 @@ source $DIR/af-defines.sh
 
 # shut down things
 if [ -x /etc/init.d/hildon-desktop ]; then
+  logger -t CUD 'Stopping hildon-desktop' 
   $SUDO /etc/init.d/hildon-desktop stop
 fi
 if [ -x /etc/init.d/icd2 ]; then
+  logger -t CUD 'Stopping icd2'
   $SUDO /etc/init.d/icd2 stop
 fi
+logger -t CUD 'Stopping a bunch more things'
 $SUDO /etc/init.d/af-base-apps stop
 $SUDO $DIR/gconf-daemon.sh stop
 if ps ax | grep -v grep | grep -q gconfd-2; then
@@ -56,60 +59,47 @@ fi
 
 if [ "x$OSSO_CUD_DOES_NOT_DESTROY" = "x" ]; then
   # Remove all user data
+  logger -t CUD 'Cleaning gconf'
   CUD=foo /usr/sbin/gconf-clean.sh 
 
-  # possibly clear memory card
-  if [ -x /usr/bin/osso-product-info ]; then
-    HW=`/usr/bin/osso-product-info -qOSSO_PRODUCT_HARDWARE`
-    if [ "$HW" = 'RX-44' -o "$HW" = 'RX-48' ]; then
-      /usr/sbin/osso-clean-mmc.sh
-    fi
-  fi
-
   OLDDIR=`pwd`
-  if [ -d /home/user/.osso ]; then
-    cd /home/user/.osso
-    rm -rf *
-  fi  
+
+  logger -t CUD 'Running user cud scripts'
 
   cd $HOME/.osso-cud-scripts ;# this location should be deprecated
   for f in `ls *.sh`; do
     # if we are root, this is run as root (but no can do because
     # user 'user' might not exist)
+    logger -t CUD "$HOME/.osso-cud-scripts/$f"
     ./$f
     RC=$?
     if [ $RC != 0 ]; then
       echo "$0: Warning, '$f' returned non-zero return code $RC"
     fi
   done
+
+  logger -t CUD 'Cleaning mmc'
+
+  /usr/sbin/osso-clean-mmc.sh
+
+  logger -t CUD 'Running system CUD scripts'
   cd /etc/osso-cud-scripts
   for f in `ls *.sh`; do
     # if we are root, this is run as root (but no can do because
     # user 'user' might not exist)
+    logger -t CUD "/etc/osso-cud-scripts/$f"
     ./$f
     RC=$?
     if [ $RC != 0 ]; then
       echo "$0: Warning, '$f' returned non-zero return code $RC"
     fi
   done
-  rm -rf $MYDOCSDIR/*
-  rm -rf $MYDOCSDIR/.documents/*
-  rm -rf $MYDOCSDIR/.games/*
-  rm -rf $MYDOCSDIR/.images/*
-  rm -rf $MYDOCSDIR/.sounds/*
-  rm -rf $MYDOCSDIR/.videos/*
   cd $OLDDIR
 else
   echo "$0: OSSO_CUD_DOES_NOT_DESTROY defined, no data deleted"
 fi
 
-# re-create first boot flags
-touch $HOME/.suw_first_run
-touch $HOME/first-boot-flag
-if test $(id -u) -eq 0; then
-  chown user.users $HOME/.suw_first_run
-  chown user.users $HOME/first-boot-flag
-fi
+logger -t CUD 'Running common bits'
 
 # final cleanup and reboot
 CUD=foo source /usr/sbin/osso-app-killer-common.sh

@@ -1,3 +1,2 @@
 *.sh /usr/sbin
 ../osso-app-killer.sudoers /etc/sudoers.d
-../remove-user-content-cud.sh /etc/osso-cud-scripts
