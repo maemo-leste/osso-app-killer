@@ -1,3 +1,12 @@
+osso-app-killer (1.29-1) unstable; urgency=low
+
+  * Provide script /etc/osso-cud-scripts/remove-user-content-cud.sh
+    to remove user content during CUD
+  * Fixes: NB#109305 (Unable to delete default files from File manager with clear device option from control panel)
+  * Parially fixes NB#111442 (osso-app-killer-cud.sh shall be checked and refreshed)
+
+ -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Tue, 21 Apr 2009 11:23:53 +0300
+
 osso-app-killer (1.28-1) unstable; urgency=low
 
   * Skip over /apps/osso/hildon-desktop/applets, and /apps/osso/hildon-home during

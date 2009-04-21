@@ -45,12 +45,6 @@ source $DIR/af-defines.sh
 if [ -x /etc/init.d/hildon-desktop ]; then
   $SUDO /etc/init.d/hildon-desktop stop
 fi
-if [ -x /etc/init.d/metalayer-crawler0 ]; then
-  $SUDO /etc/init.d/metalayer-crawler0 stop
-fi
-if [ -x /etc/init.d/mediaplayer-daemon ]; then
-  $SUDO /etc/init.d/mediaplayer-daemon stop
-fi
 if [ -x /etc/init.d/icd2 ]; then
   $SUDO /etc/init.d/icd2 stop
 fi
