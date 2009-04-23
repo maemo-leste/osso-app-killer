@@ -1,3 +1,10 @@
+osso-app-killer (1.30-1) unstable; urgency=low
+
+  * Skip over 'modest/(server_)?accounts' during RFS
+  * Fixes: NB#105630 (Email account erased after performing restore original settings)
+
+ -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Thu, 23 Apr 2009 13:02:21 +0300
+
 osso-app-killer (1.29-1) unstable; urgency=low
 
   * Re-write script osso-clean-mmc.sh to handle Fremantle's MMC cleaning
