@@ -2,6 +2,7 @@ osso-app-killer (1.31-1) unstable; urgency=low
 
   * Set IFS to exactly \n so as not to fail to remove files whose names contain a space
     during CUD.
+  * Fixes: NB#129493 (Files whose names contain spaces are not removed during CUD)
 
  -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Wed, 22 Jul 2009 16:57:24 +0300
 
