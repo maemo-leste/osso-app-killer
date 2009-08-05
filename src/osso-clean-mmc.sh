@@ -24,4 +24,9 @@ done
 
 unset IFS
 
+mkdir -p /home/user
+cd /etc/skel
+cp -a . /home/user
+chown -R user:users /home/user
+
 cd ${OLD_PWD}

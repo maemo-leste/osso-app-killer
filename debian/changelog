@@ -1,3 +1,10 @@
+osso-app-killer (1.32-1) unstable; urgency=low
+
+  * Copy contents of /etc/skel to /home/user after wiping /home/user
+  * Fixes: NB#131262 (Clear device in Control panel erases /home/user/auth, disabling SSU)
+
+ -- Gabriel Schulhof <gabriel.schulhof@nokia.com>  Wed,  5 Aug 2009 12:56:59 +0300
+
 osso-app-killer (1.31-1) unstable; urgency=low
 
   * Set IFS to exactly \n so as not to fail to remove files whose names contain a space
