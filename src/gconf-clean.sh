@@ -101,6 +101,12 @@ if [ $? = 0 ]; then
             continue
           fi
 
+          # in ROS, paths having 'activesync' are preserved
+          echo "$f" | grep -e 'activesync' > /dev/null
+          if [ $? = 0 ]; then
+            continue
+          fi
+
           # in ROS, paths having 'modest/accounts' and 'modest/server_accounts'
           # are preserved
           echo "$f" | grep -E 'modest/(server_)?accounts' > /dev/null
