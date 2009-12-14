@@ -1,3 +1,11 @@
+osso-app-killer (1.33-2) unstable; urgency=low
+
+  [David Kedves]
+  - Using a whitelist when clearing MyDocs
+  * Fixes: NB#149564 - Enable clear user data (app-killer part)
+
+ -- David Kedves <kedazo@gmail.com>  Mon, 14 Dec 2009 13:33:15 +0100
+
 osso-app-killer (1.33-1) unstable; urgency=low
 
   * Skip /apps/activesync during RFS

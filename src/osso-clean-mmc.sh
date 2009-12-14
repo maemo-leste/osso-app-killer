@@ -8,11 +8,13 @@ set -x
 IFS='
 '
 
-DIR_TO_CLEAR=${HOME}/MyDocs
-
 cd ${HOME}/MyDocs
-for rmable in $(ls -A); do
-  rm -rf "$rmable"
+DONT='(documents/User Guides)|(documents/maemo_software_copyright.pdf)|'
+DONT=${DONT}'(cities)|(\./\.qf)|(\./\.n900\.ico)|(autorun\.inf)|'
+DONT=${DONT}'(\./Mac OS)|(\./\._)|(\.VolumeIcon\.icns)|(\./\.sounds/Ringtones)'
+
+for rmable in $(find ./ | sort -r | egrep -v "${DONT}"); do
+  rm -f "$rmable"
 done
 
 cd ${HOME}
