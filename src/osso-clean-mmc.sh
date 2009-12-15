@@ -14,7 +14,11 @@ DONT=${DONT}'(cities)|(\./\.qf)|(\./\.n900\.ico)|(autorun\.inf)|'
 DONT=${DONT}'(\./Mac OS)|(\./\._)|(\.VolumeIcon\.icns)|(\./\.sounds/Ringtones)'
 
 for rmable in $(find ./ | sort -r | egrep -v "${DONT}"); do
-  rm -f "$rmable"
+  if test -d "${rmable}"; then
+    rmdir "${rmable}"
+  else
+    rm -f "${rmable}"
+  fi
 done
 
 cd ${HOME}
