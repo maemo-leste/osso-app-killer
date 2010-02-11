@@ -12,6 +12,7 @@ cd ${HOME}/MyDocs
 DONT='(documents/User Guides)|(documents/maemo_software_copyright.pdf)|'
 DONT=${DONT}'(cities)|(\./\.qf)|(\./\.n900\.ico)|(autorun\.inf)|'
 DONT=${DONT}'(\./Mac OS)|(\./\._)|(\.VolumeIcon\.icns)|(\./\.sounds/Ringtones)'
+DONT=${DONT}'|(\./\.images)'
 
 for rmable in $(find ./ | sort -r | egrep -v "${DONT}"); do
   if test -d "${rmable}"; then
