@@ -1,3 +1,11 @@
+osso-app-killer (1.33-3) unstable; urgency=low
+
+  [Thomas Thurman]
+  - Added .images to the clearing MyDocs whitelist
+  * Fixes: NB#156105 - Do not delete .images with clear device
+
+ -- Thomas Thurman <tthurman@gnome.org>  Thu, 11 Feb 2010 12:26:46 +0100
+
 osso-app-killer (1.33-2) unstable; urgency=low
 
   [David Kedves]
